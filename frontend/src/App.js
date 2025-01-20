@@ -8,7 +8,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
 
     const handleGenerateTestCases = async () => {
-        if (!code || !algorithm || !language) {
+        if (!code.trim() || !algorithm || !language) {
             alert("Please enter code, select an algorithm, and select a language.");
             return;
         }
@@ -16,31 +16,29 @@ const App = () => {
         setLoading(true);
 
         try {
-            const response = await fetch'https://backend-test-case-gen-proj-3.onrender.com/generate/test-cases'(, {
+            const response = await fetch('https://backend-test-case-gen-proj-3.onrender.com/generate/test-cases', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 
                     code, 
-                    algorithm_name: algorithm.toLowerCase().replace(' ', '_'), // Match format used by backend
-                    algorithm_type: 'sorting', // Algorithm type can be dynamic if needed
+                    algorithm_name: algorithm, 
                     language 
                 }),
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
             const data = await response.json();
-            console.log("Backend Response:", data);  // Log the response to see the structure
+            console.log("Backend Response:", data);
 
             if (data.error) {
                 alert(`Error: ${data.error}`);
             } else {
-                console.log("Received test cases:", data.test_cases);
-                setTestCases(data.test_cases); // Update test cases state
+                setTestCases(data.test_cases || []);
             }
         } catch (error) {
             console.error("Network error:", error);
@@ -82,7 +80,6 @@ const App = () => {
                     <option value="Merge Sort">Merge Sort</option>
                     <option value="Quick Sort">Quick Sort</option>
                     <option value="Heap Sort">Heap Sort</option>
-                    
                 </select>
             </div>
             <div>
@@ -102,9 +99,7 @@ const App = () => {
                                     <strong>Test Case {index + 1}</strong>
                                     <ul>
                                         <li>Input: {JSON.stringify(testCase.input)}</li>
-                                        <li>
-                                            Expected Output: {testCase.expected_output ? JSON.stringify(testCase.expected_output) : 'No expected output available.'}
-                                        </li>
+                                        <li>Expected Output: {JSON.stringify(testCase.expected_output)}</li>
                                     </ul>
                                 </li>
                             ))}
