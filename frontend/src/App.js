@@ -3,13 +3,12 @@ import React, { useState } from 'react';
 const App = () => {
     const [code, setCode] = useState('');
     const [algorithm, setAlgorithm] = useState('Bubble Sort'); // Default to Bubble Sort
-    const [language, setLanguage] = useState('Java'); // Default to Java
     const [testCases, setTestCases] = useState([]); // Initialize as an empty array
     const [loading, setLoading] = useState(false);
 
     const handleGenerateTestCases = async () => {
-        if (!code.trim() || !algorithm || !language) {
-            alert("Please enter code, select an algorithm, and select a language.");
+        if (!algorithm) {
+            alert("Please select an algorithm.");
             return;
         }
 
@@ -22,9 +21,7 @@ const App = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 
-                    code, 
-                    algorithm_name: algorithm, 
-                    language 
+                    algorithm_name: algorithm 
                 }),
             });
 
@@ -59,15 +56,6 @@ const App = () => {
                     rows="10"
                     cols="50"
                 />
-            </div>
-            <div>
-                <select
-                    value={language}
-                    onChange={(e) => setLanguage(e.target.value)}
-                >
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                </select>
             </div>
             <div>
                 <select
