@@ -53,7 +53,7 @@ const App = () => {
             <h1>Test Case Generator</h1>
             <div>
                 <textarea
-                    placeholder="Paste your Java code here"
+                    placeholder="Paste your Java or Python code here"
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
                     rows="10"
@@ -74,12 +74,26 @@ const App = () => {
                     value={algorithm}
                     onChange={(e) => setAlgorithm(e.target.value)}
                 >
-                    <option value="Bubble Sort">Bubble Sort</option>
-                    <option value="Selection Sort">Selection Sort</option>
-                    <option value="Insertion Sort">Insertion Sort</option>
-                    <option value="Merge Sort">Merge Sort</option>
-                    <option value="Quick Sort">Quick Sort</option>
-                    <option value="Heap Sort">Heap Sort</option>
+                    {/* Sorting Algorithms */}
+                    <optgroup label="Sorting Algorithms">
+                        <option value="Bubble Sort">Bubble Sort</option>
+                        <option value="Selection Sort">Selection Sort</option>
+                        <option value="Insertion Sort">Insertion Sort</option>
+                        <option value="Merge Sort">Merge Sort</option>
+                        <option value="Quick Sort">Quick Sort</option>
+                        <option value="Heap Sort">Heap Sort</option>
+                        <option value="Radix Sort">Radix Sort</option>
+                        <option value="Counting Sort">Counting Sort</option>
+                    </optgroup>
+                    {/* Searching Algorithms */}
+                    <optgroup label="Searching Algorithms">
+                        <option value="Linear Search">Linear Search</option>
+                        <option value="Binary Search">Binary Search</option>
+                        <option value="Jump Search">Jump Search</option>
+                        <option value="Exponential Search">Exponential Search</option>
+                        <option value="Interpolation Search">Interpolation Search</option>
+                        <option value="Fibonacci Search">Fibonacci Search</option>
+                    </optgroup>
                 </select>
             </div>
             <div>
