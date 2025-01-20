@@ -84,16 +84,7 @@ const App = () => {
                         <option value="Heap Sort">Heap Sort</option>
                         <option value="Radix Sort">Radix Sort</option>
                         <option value="Counting Sort">Counting Sort</option>
-                    </optgroup>
-                    {/* Searching Algorithms */}
-                    <optgroup label="Searching Algorithms">
-                        <option value="Linear Search">Linear Search</option>
-                        <option value="Binary Search">Binary Search</option>
-                        <option value="Jump Search">Jump Search</option>
-                        <option value="Exponential Search">Exponential Search</option>
-                        <option value="Interpolation Search">Interpolation Search</option>
-                        <option value="Fibonacci Search">Fibonacci Search</option>
-                    </optgroup>
+                   
                 </select>
             </div>
             <div>
