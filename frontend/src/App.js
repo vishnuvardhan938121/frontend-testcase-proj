@@ -84,7 +84,7 @@ const App = () => {
                         <option value="Heap Sort">Heap Sort</option>
                         <option value="Radix Sort">Radix Sort</option>
                         <option value="Counting Sort">Counting Sort</option>
-                   
+                    </optgroup>
                 </select>
             </div>
             <div>
